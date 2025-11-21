@@ -21,7 +21,8 @@ import analyticsRoutes from "./routes/analytics.routes.js";
 
 const app = express();
 
-// ✅ Configure CORS FIRSTconst allowedOrigins = [
+// ✅ Configure CORS FIRST
+const allowedOrigins = [
   "http://localhost:5173",
   "http://localhost:3000", 
   "https://velvoriaaa.netlify.app",
