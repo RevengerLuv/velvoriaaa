@@ -26,7 +26,7 @@ import Invoices from "./pages/seller/Invoices";
 import FundUsage from "./pages/seller/FundUsage";
 import AdsManagement from "./pages/seller/AdsManagement";
 import { GoogleOAuthProvider } from '@react-oauth/google';
-import MyOrders from "./pages/MyOrders";
+import MyOrders from "./pages/Myorders";
 import Profile from "./pages/Profile";
 import CustomOrders from "./pages/CustomOrders";
 
@@ -79,7 +79,7 @@ const App = () => {
             <Route path="/product/:category/:id" element={<SingleProduct />} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/add-address" element={<Address />} />
-            {/* <Route path="/my-orders" element={<MyOrders />} /> */}
+            <Route path="/my-orders" element={<Myorders />} />
             {/* Custom Orders route should be outside seller routes */}
             <Route path="/custom-orders" element={<CustomOrders />} />
             
