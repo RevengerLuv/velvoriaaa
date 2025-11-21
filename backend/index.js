@@ -43,6 +43,28 @@ app.use(express.urlencoded({ extended: true }));
 // ✅ Then static + routes
 app.use("/images", express.static("uploads"));
 
+// Basic test routes
+app.get("/api/health", (req, res) => {
+  res.json({ success: true, message: "Backend is running!" });
+});
+
+app.get("/api/product/list", (req, res) => {
+  res.json({ 
+    success: true, 
+    products: [
+      { _id: "1", name: "Test Product", price: 29.99 }
+    ] 
+  });
+});
+
+app.get("/api/user/is-auth", (req, res) => {
+  res.json({ success: false, message: "Not authenticated" });
+});
+
+app.get("/api/seller/is-auth", (req, res) => {
+  res.json({ success: false, message: "Not authenticated" });
+});
+
 // API routes
 
 app.use("/api/admin", adminRoutes);
