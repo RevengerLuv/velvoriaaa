@@ -21,8 +21,12 @@ import analyticsRoutes from "./routes/analytics.routes.js";
 
 const app = express();
 
-// ✅ Configure CORS FIRST
-const allowedOrigins = ["http://localhost:5173"];
+// ✅ Configure CORS FIRSTconst allowedOrigins = [
+  "http://localhost:5173",
+  "http://localhost:3000", 
+  "https://velvoriaaa.netlify.app",
+  "https://velvoria-frontend.onrender.com" // your frontend Render URL
+];
 app.use(
   cors({
     origin: allowedOrigins,
