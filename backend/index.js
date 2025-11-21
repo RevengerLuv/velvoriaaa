@@ -26,7 +26,8 @@ const allowedOrigins = [
   "http://localhost:5173",
   "http://localhost:3000", 
   "https://velvoriaaa.netlify.app",
-  "https://velvoria-frontend.onrender.com"
+  "https://velvoria-frontend.onrender.com",
+  "https://velvoriaaa-1.onrender.com"  // ADD YOUR FRONTEND DOMAIN
 ];
 app.use(
   cors({
