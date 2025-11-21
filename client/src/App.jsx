@@ -79,7 +79,7 @@ const App = () => {
             <Route path="/product/:category/:id" element={<SingleProduct />} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/add-address" element={<Address />} />
-            <Route path="/my-orders" element={<Myorders />} />
+            <Route path="/my-orders" element={<MyOrders />} />
             {/* Custom Orders route should be outside seller routes */}
             <Route path="/custom-orders" element={<CustomOrders />} />
             
