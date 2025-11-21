@@ -26,7 +26,7 @@ const allowedOrigins = [
   "http://localhost:5173",
   "http://localhost:3000", 
   "https://velvoriaaa.netlify.app",
-  "https://velvoria-frontend.onrender.com" // your frontend Render URL
+  "https://velvoria-frontend.onrender.com"
 ];
 app.use(
   cors({
@@ -43,30 +43,16 @@ app.use(express.urlencoded({ extended: true }));
 // ✅ Then static + routes
 app.use("/images", express.static("uploads"));
 
-// Basic test routes
+// Health check route (ONLY ONE - remove the duplicate)
 app.get("/api/health", (req, res) => {
-  res.json({ success: true, message: "Backend is running!" });
-});
-
-app.get("/api/product/list", (req, res) => {
-  res.json({ 
-    success: true, 
-    products: [
-      { _id: "1", name: "Test Product", price: 29.99 }
-    ] 
+  res.json({
+    status: "OK",
+    message: "Server is running",
+    timestamp: new Date().toISOString(),
   });
 });
 
-app.get("/api/user/is-auth", (req, res) => {
-  res.json({ success: false, message: "Not authenticated" });
-});
-
-app.get("/api/seller/is-auth", (req, res) => {
-  res.json({ success: false, message: "Not authenticated" });
-});
-
 // API routes
-
 app.use("/api/admin", adminRoutes);
 app.use("/api/user", userRoutes);
 app.use("/api/seller", sellerRoutes);
@@ -77,54 +63,18 @@ app.use("/api/orders", orderRoutes);
 app.use("/api/payment", paymentRoutes);
 app.use("/api/analytics", analyticsRoutes);
 
-// Health check route
-app.get("/api/health", (req, res) => {
-  res.json({
-    status: "OK",
-    message: "Server is running",
-    timestamp: new Date().toISOString(),
-  });
-});
-
 // Connect to services and start server
-const PORT = process.env.PORT || 5000 || "https://velvoriaaa.onrender.com";
+const PORT = process.env.PORT || 5000; // FIXED: Remove the URL
 
 const startServer = async () => {
   try {
     await connectDB();
     await connectCloudinary();
 
-    app.listen(PORT, () => {
+    app.listen(PORT, '0.0.0.0', () => { // Added '0.0.0.0' for Render.com
       console.log(`✅ Server is running on port ${PORT}`);
       console.log(`✅ Database connected`);
-      console.log(`✅ Cloudinary configured
-
-
-⣾⣿⠁⢸⣿⣧⠀⣿⣿⠉⠹⣿⣆⠉⠉⠉⠉⣿⣿⠟
-⣿⣿⠀⠘⠛⠛⠀⣿⣿⠀⠀⣿⣿⠀⠀⠀⣼⣿⡟
-⣿⣿⠀⠀⠀⠀⠀⣿⣿⣤⣾⡿⠃⠀⠀⣼⣿⡟
-⣿⣿⠀⠀⠀⠀⠀⣿⣿⢻⣿⣇⠀⠀⠀⣿⣿⠁
-⣿⣿⠀⢸⣿⣷⠀⣿⣿⠀⣿⣿⡄⠀⠀⣿⣿
-⢻⣿⣦⣼⣿⠏⠀⣿⣿⠀⢸⣿⣧⠀⢀⣿⣿
-⠈⠛⠛⠛⠋⠀⠀⠛⠛⠀⠀⠛⠛⠀⠸⠛⠛
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣴⣿⣦⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢻⣿⣿⠂⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣴⣿⣿⣀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⢠⣾⣿⣿⣿⣿⣿⣿⣦⠀
-⠀⠀⠀⠀⠀⠀⣴⣿⢿⣷⠒⠲⣾⣾⣿⣿
-⠀⠀⠀⠀⣴⣿⠟⠁⠀⢿⣿⠁⣿⣿⣿⠻⣿⣄⠀⠀⠀⠀
-⠀⠀⣠⡾⠟⠁⠀⠀⠀⢸⣿⣸⣿⣿⣿⣆⠙⢿⣷⡀⠀⠀
-⣰⡿⠋⠀⠀⠀⠀⠀⠀⢸⣿⣿⣿⣿⣿⣿⠀⠀⠉⠻⣿⡀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⣾⣿⣿⣿⣿⣿⣿⣆⠂⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⣼⣿⣿⣿⡿⣿⣿⣿⣿⡄⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⢠⣿⣿⠿⠟⠀⠀⠻⣿⣿⡇⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⢀⣾⡿⠃⠀⠀⠀⠀⠀⠘⢿⣿⡀⠀⠀⠀
-⠀⠀⠀⠀⠀⣰⣿⡟⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⣷⡀⠀⠀
-⠀⠀⠀⠀⢠⣿⠟⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠻⣿⣧⠀⠀
-⠀⠀⠀⢀⣿⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⣿⣆⠀
-⠀⠀⠠⢾⠇⠀⠀⠀⠀   ⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⣷⡤.
-
-sɪɪɪɪᴜᴜᴜu`);
+      console.log(`✅ Cloudinary configured`);
     });
   } catch (error) {
     console.error("❌ Failed to start server:", error);
