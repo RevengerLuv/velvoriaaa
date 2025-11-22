@@ -2,6 +2,32 @@
 import { useState, useEffect } from "react";
 import { useAppContext } from "../../context/AppContext";
 import { toast } from "react-hot-toast";
+// Chart.js & react-chartjs-2 FIX
+import {
+  Chart as ChartJS,
+  ArcElement,
+  LineElement,
+  BarElement,
+  PointElement,
+  CategoryScale,
+  LinearScale,
+  Tooltip,
+  Legend,
+} from "chart.js";
+
+import { Doughnut, Line, Bar } from "react-chartjs-2";
+
+ChartJS.register(
+  ArcElement,
+  LineElement,
+  BarElement,
+  PointElement,
+  CategoryScale,
+  LinearScale,
+  Tooltip,
+  Legend
+);
+
 // ... chart imports remain the same
 
 const Analytics = () => {
