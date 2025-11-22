@@ -1,4 +1,5 @@
 import { HashRouter as Router, Routes, Route, useLocation } from "react-router-dom";
+import { useAppContext } from "./context/AppContext"; // ADD THIS IMPORT
 // Remove any BrowserRouter imports and only use HashRouter
 
 const App = () => {
