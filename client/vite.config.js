@@ -6,5 +6,15 @@ export default defineConfig({
   server: {
     port: 5173,
     host: true,
+  },
+  // ADD THESE LINES FOR PRODUCTION:
+  base: '/',
+  build: {
+    outDir: 'dist',
+  },
+  // This is crucial for SPA routing
+  preview: {
+    host: true,
+    port: 4173
   }
 })
