@@ -58,6 +58,7 @@ router.get("/financial-reports", enhancedAuthSeller, getFinancialReports);
 router.get("/users", enhancedAuthSeller, getUsers);
 router.get("/user-stats", enhancedAuthSeller, getUserStats);
 router.get("/customers/:customerId/orders", enhancedAuthSeller, getCustomerOrders);
+
 router.put("/customers/:customerId/status", enhancedAuthSeller, updateCustomerStatus);
 
 // Inventory Management Routes
@@ -67,7 +68,7 @@ router.put("/inventory/:id", enhancedAuthSeller, updateProductStock);
 // Admin Management Routes
 router.post("/create-admin", enhancedAuthSeller, createAdminUser);
 router.get("/admin-users", enhancedAuthSeller, getAdminUsers);
-router.delete("/admin-users/:id", enhancedAuthSeller, deleteAdminUser);
+router.delete("/admin-users/:id", enhancedAuthSeller, deleteAdminUser)
 
 // Data Management Routes
 router.get("/export-data", enhancedAuthSeller, exportData);
