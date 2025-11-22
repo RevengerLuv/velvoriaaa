@@ -223,14 +223,17 @@ const Orders = () => {
                         <div key={item._id || index} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
                           <div className="flex items-center space-x-3">
                             {item.product?.image?.[0] ? (
-                              <img
-                                src={`http://localhost:5000/images/${item.product.image[0]}`}
-                                alt={item.product.name}
-                                className="w-12 h-12 object-cover rounded-lg"
-                                onError={(e) => {
-                                  e.target.src = 'https://via.placeholder.com/48?text=No+Image';
-                                }}
-                              />
+                             const BASE_URL = import.meta.env.VITE_BACKEND_URL;
+
+<img
+  src={`${BASE_URL}/images/${item.product.image[0]}`}
+  alt={item.product.name}
+  className="w-12 h-12 object-cover rounded-lg"
+  onError={(e) => {
+    e.target.src = "https://via.placeholder.com/48?text=No+Image";
+  }}
+/>
+
                             ) : (
                               <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
                                 <span className="text-lg">🧶</span>
@@ -445,11 +448,17 @@ const Orders = () => {
                     <div key={item._id || index} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
                       <div className="flex items-center space-x-3">
                         {item.product?.image?.[0] ? (
-                          <img
-                            src={`http://localhost:5000/images/${item.product.image[0]}`}
-                            alt={item.product.name}
-                            className="w-12 h-12 object-cover rounded-lg"
-                          />
+                         const BASE_URL = import.meta.env.VITE_BACKEND_URL;
+
+<img
+  src={`${BASE_URL}/images/${item.product.image[0]}`}
+  alt={item.product.name}
+  className="w-12 h-12 object-cover rounded-lg"
+  onError={(e) => {
+    e.target.src = "https://via.placeholder.com/48?text=No+Image";
+  }}
+/>
+
                         ) : (
                           <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
                             <span className="text-lg">🧶</span>
