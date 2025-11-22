@@ -9,6 +9,7 @@ import {
   changePassword
 } from "../controller/user.controller.js";
 import authUser from "../middlewares/authUser.js";
+import { authSeller } from "../../middlewares/authSeller.js";
 // Add this import
 import { saveUserLocation } from "../controller/user.controller.js";
 
