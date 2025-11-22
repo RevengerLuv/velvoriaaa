@@ -55,7 +55,7 @@ const SingleProduct = () => {
                   }`}
                 >
                   <img
-                    src={`http://localhost:5000/images/${image}`}
+                    src={`${BASE_URL}/images/${product.image[0]}`}
                     alt={`${product.name} view ${index + 1}`}
                     className="w-20 h-20 lg:w-24 lg:h-24 object-cover"
                   />
@@ -64,11 +64,14 @@ const SingleProduct = () => {
             </div>
 
             <div className="border border-gray-200 rounded-lg overflow-hidden order-1 lg:order-2 flex-1">
-              <img
-                src={`http://localhost:5000/images/${thumbnail}`}
-                alt={product.name}
-                className="w-full h-96 object-cover"
-              />
+              const BASE_URL = import.meta.env.VITE_BACKEND_URL;
+
+<img
+  src={`${BASE_URL}/images/${thumbnail}`}
+  alt={product.name}
+  className="w-full h-96 object-cover"
+/>
+
             </div>
           </div>
 
