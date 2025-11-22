@@ -209,11 +209,13 @@ const filteredInventory = inventory.filter(item => {
                     <td className="px-6 py-4">
                       <div className="flex items-center gap-3">
                         {item.image ? (
-                          <img 
-                            src={`${BASE_URL}/images/${product.image[0]}`}
-                            alt={item.name}
-                            className="w-12 h-12 object-cover rounded-lg"
-                          />
+                          const BASE_URL = import.meta.env.VITE_BACKEND_URL;
+<img 
+  src={`${BASE_URL}/images/${product.image[0]}`}
+  alt={item.name}
+  className="w-12 h-12 object-cover rounded-lg"
+/>
+
                         ) : (
                           <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
                             <span className="text-purple-600">🧶</span>
