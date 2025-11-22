@@ -17,11 +17,14 @@ const ProductCard = ({ product, index }) => {
     >
       {/* Image Container */}
       <div className="relative overflow-hidden rounded-xl mb-4">
-        <img
-          className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500"
-          src={`http://localhost:5000/images/${product.image[0]}`}
-          alt={product.name}
-        />
+        const BASE_URL = import.meta.env.VITE_BACKEND_URL;
+
+<img
+  className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500"
+  src={`${BASE_URL}/images/${product.image[0]}`}
+  alt={product.name}
+/>
+
         
         {/* Badges */}
         <div className="absolute top-3 left-3 space-y-1">
