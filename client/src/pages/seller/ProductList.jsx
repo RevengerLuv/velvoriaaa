@@ -6,22 +6,20 @@ const ProductList = () => {
   const { products, fetchProducts, axios } = useAppContext();
   const [localProducts, setLocalProducts] = useState([]);
 
-  // Sync local state with context products
   useEffect(() => {
     setLocalProducts(products);
   }, [products]);
 
   const toggleStock = async (id, inStock) => {
     try {
-      const { data } = await axios.post("/api/product/stock", { id, inStock });
+      // CHANGE FROM: /api/product/stock TO: /api/seller/inventory/${id}
+      const { data } = await axios.put(`/api/seller/inventory/${id}`, { stock: inStock ? 10 : 0 });
       if (data.success) {
-        // Update local state immediately for better UX
         setLocalProducts(prev => 
           prev.map(product => 
             product._id === id ? { ...product, inStock } : product
           )
         );
-        // Then refresh from server
         fetchProducts();
         toast.success(data.message);
       } else {
@@ -31,6 +29,7 @@ const ProductList = () => {
       toast.error(error.message);
     }
   };
+
 
   return (
     <div className="flex-1 py-10 flex flex-col justify-between">
