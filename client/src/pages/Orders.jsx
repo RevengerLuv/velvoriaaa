@@ -223,7 +223,7 @@ const Orders = () => {
                         <div key={item._id || index} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
                           <div className="flex items-center space-x-3">
                             {item.product?.image?.[0] ? (
-                             const BASE_URL = import.meta.env.VITE_BACKEND_URL;
+                             
 
 <img
   src={`${BASE_URL}/images/${item.product.image[0]}`}
@@ -448,7 +448,7 @@ const Orders = () => {
                     <div key={item._id || index} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
                       <div className="flex items-center space-x-3">
                         {item.product?.image?.[0] ? (
-                         const BASE_URL = import.meta.env.VITE_BACKEND_URL;
+                         
 
 <img
   src={`${BASE_URL}/images/${item.product.image[0]}`}
