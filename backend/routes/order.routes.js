@@ -1,6 +1,7 @@
 // order.routes.js - Enhanced Version
 import express from "express";
 import authUser from "../middlewares/authUser.js";
+import { authSeller } from "../../middlewares/authSeller.js";
 import {
   getAllOrders,
   getUserOrders,
