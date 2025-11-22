@@ -52,11 +52,13 @@ const ProductList = () => {
                 <tr key={product._id} className="border-t border-gray-500/20">
                   <td className="md:px-4 pl-2 md:pl-4 py-3 flex items-center space-x-3 truncate">
                     <div className="border border-gray-300 rounded p-2">
-                      <img
-                        src={`${BASE_URL}/images/${product.image[0]}`}
-                        alt="Product"
-                        className="w-16"
-                      />
+                                     const BASE_URL = import.meta.env.VITE_BACKEND_URL;
+<img
+  src={`${BASE_URL}/images/${product.image[0]}`}
+  alt="Product"
+  className="w-16"
+/>
+
                     </div>
                     <span className="truncate max-sm:hidden w-full">
                       {product.name}
