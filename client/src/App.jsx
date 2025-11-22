@@ -1,39 +1,10 @@
-import { Routes, Route, useLocation } from "react-router-dom";
-import Products from "./pages/Products";
-import SingleProduct from "./pages/SingleProduct";
-import Home from "./pages/Home";
-import Cart from "./pages/Cart";
-import Navbar from "./components/Navbar";
-import { Toaster } from "react-hot-toast";
-import Footer from "./components/Footer";
-import { useAppContext } from "./context/AppContext";
-import Auth from "./modals/Auth";
-import ProductCategory from "./pages/ProductCategory";
-import Address from "./pages/Address";
-import SellerLogin from "./components/seller/SellerLogin";
-import SellerLayout from "./pages/seller/SellerLayout";
-import AddProduct from "./pages/seller/AddProduct";
-import ProductList from "./pages/seller/ProductList";
-import Orders from "./pages/seller/Orders";
-import Dashboard from "./pages/seller/Dashboard";
-import Accounts from "./pages/seller/Accounts";
-import Analytics from "./pages/seller/Analytics";
-import Inventory from "./pages/seller/Inventory";
-import Customers from "./pages/seller/Customers";
-import Settings from "./pages/seller/Settings";
-import Reviews from "./pages/seller/Reviews";
-import Invoices from "./pages/seller/Invoices";
-import FundUsage from "./pages/seller/FundUsage";
-import AdsManagement from "./pages/seller/AdsManagement";
-import { GoogleOAuthProvider } from '@react-oauth/google';
-import MyOrders from "./pages/Myorders";
-import Profile from "./pages/Profile";
-import CustomOrders from "./pages/CustomOrders";
+import { HashRouter as Router, Routes, Route, useLocation } from "react-router-dom";
+// Remove any BrowserRouter imports and only use HashRouter
 
 const App = () => {
   const location = useLocation();
   const isSellerPath = location.pathname.includes("seller");
-  const { showUserLogin, isSeller } = useAppContext(); // This might be undefined
+  const { showUserLogin, isSeller } = useAppContext();
   
   return (
     <GoogleOAuthProvider clientId="233054564282-9bkk084dbqombdtinrbpdn9utmd1636k.apps.googleusercontent.com">
@@ -80,7 +51,6 @@ const App = () => {
             <Route path="/cart" element={<Cart />} />
             <Route path="/add-address" element={<Address />} />
             <Route path="/my-orders" element={<MyOrders />} />
-            {/* Custom Orders route should be outside seller routes */}
             <Route path="/custom-orders" element={<CustomOrders />} />
             
             {/* Seller routes */}
