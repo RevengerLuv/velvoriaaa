@@ -212,10 +212,12 @@ const filteredInventory = inventory.filter(item => {
                         {item.image ? (
                           
 <img 
-  src={`${BASE_URL}/images/${product.image[0]}`}
+  src={`${BASE_URL}/images/${item.image?.[0]}`}
   alt={item.name}
   className="w-12 h-12 object-cover rounded-lg"
+  onError={(e) => (e.target.src = "https://via.placeholder.com/48?text=No+Image")}
 />
+
 
                         ) : (
                           <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
