@@ -30,6 +30,9 @@ import {
   updateAdsCampaign
 } from "../controller/admin.controller.js";
 
+// ADD ORDER ROUTES IMPORT
+import { getAllOrders, updateOrderStatus, addTrackingInfo } from "../controller/order.controller.js";
+
 const router = express.Router();
 
 // Authentication routes
@@ -42,6 +45,11 @@ router.get("/dashboard", authSeller, getDashboardStats);
 router.get("/realtime-stats", authSeller, getRealTimeStats);
 router.get("/analytics", authSeller, getOrderAnalytics);
 router.get("/financial-reports", authSeller, getFinancialReports);
+
+// ORDER MANAGEMENT ROUTES - ADD THESE
+router.get("/orders", authSeller, getAllOrders);
+router.put("/orders/:id/status", authSeller, updateOrderStatus);
+router.put("/orders/:id/tracking", authSeller, addTrackingInfo);
 
 // CUSTOMER MANAGEMENT
 router.get("/users", authSeller, getUsers);
