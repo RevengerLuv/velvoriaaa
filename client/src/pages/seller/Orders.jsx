@@ -209,8 +209,7 @@ const Orders = () => {
                       {order.items?.map((item, index) => (
                         <div key={item._id || index} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
                           <div className="flex items-center space-x-3">
-                            {item.product?.image?.[0] ? (
-{item.product?.image?.[0] ? (
+                           {item.product?.image?.[0] ? (
   <img
     src={`${BASE_URL}/images/${item.product.image[0]}`}
     alt={item.product.name}
@@ -224,6 +223,7 @@ const Orders = () => {
     <span className="text-lg">🧶</span>
   </div>
 )}
+
 
                             <div>
                               <p className="font-medium text-gray-900">
