@@ -16,11 +16,16 @@ const Orders = () => {
   });
   const { axios } = useContext(AppContext);
 
+  // Helper function to get image URL
+  const getImageUrl = (imagePath) => {
+    if (!imagePath) return "https://via.placeholder.com/48?text=No+Image";
+    return `${BASE_URL}/images/${imagePath}`;
+  };
+
   const fetchOrders = async () => {
     try {
       setLoading(true);
       console.log('🔄 Fetching orders from API...');
-      // CHANGE FROM: /api/orders/seller TO: /api/seller/orders
       const { data } = await axios.get('/api/seller/orders');
       console.log('📦 API Response:', data);
       
@@ -42,7 +47,6 @@ const Orders = () => {
 
   const updateOrderStatus = async (orderId, newStatus) => {
     try {
-      // CHANGE FROM: /api/orders/${orderId}/status TO: /api/seller/orders/${orderId}/status
       const { data } = await axios.put(`/api/seller/orders/${orderId}/status`, {
         status: newStatus
       });
@@ -64,7 +68,6 @@ const Orders = () => {
 
   const addTrackingInfo = async (orderId) => {
     try {
-      // CHANGE FROM: /api/orders/${orderId}/tracking TO: /api/seller/orders/${orderId}/tracking
       const { data } = await axios.put(`/api/seller/orders/${orderId}/tracking`, trackingInfo);
 
       if (data.success) {
@@ -209,22 +212,20 @@ const Orders = () => {
                       {order.items?.map((item, index) => (
                         <div key={item._id || index} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
                           <div className="flex items-center space-x-3">
-                           {item.product?.image?.[0] ? (
-  <img
-    src={`${BASE_URL}/images/${item.product.image[0]}`}
-    alt={item.product.name}
-    className="w-12 h-12 object-cover rounded-lg"
-    onError={(e) => {
-      e.target.src = "https://via.placeholder.com/48?text=No+Image";
-    }}
-  />
-) : (
-  <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
-    <span className="text-lg">🧶</span>
-  </div>
-)}
-
-
+                            {item.product?.image?.[0] ? (
+                              <img
+                                src={getImageUrl(item.product.image[0])}
+                                alt={item.product.name}
+                                className="w-12 h-12 object-cover rounded-lg"
+                                onError={(e) => {
+                                  e.target.src = "https://via.placeholder.com/48?text=No+Image";
+                                }}
+                              />
+                            ) : (
+                              <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
+                                <span className="text-lg">🧶</span>
+                              </div>
+                            )}
                             <div>
                               <p className="font-medium text-gray-900">
                                 {item.product?.name || item.name || `Item ${index + 1}`}
@@ -302,7 +303,7 @@ const Orders = () => {
                   </div>
                 </div>
 
-                {/* Address Information - NEW SECTION */}
+                {/* Address Information */}
                 <div className="mt-6 p-4 bg-blue-50 rounded-lg border border-blue-200">
                   <h4 className="font-semibold text-gray-900 mb-3 flex items-center">
                     <span className="mr-2">🏠</span>
@@ -361,10 +362,10 @@ const Orders = () => {
                     </div>
                     
                     <div className="text-right">
-  <p className="text-sm text-gray-600">
-    Customer: {order.userId?.name || order.userId?.email || `ID: ${typeof order.userId === 'string' ? order.userId.slice(-8) : order.userId?._id?.slice(-8) || 'N/A'}`}
-  </p>
-</div>
+                      <p className="text-sm text-gray-600">
+                        Customer: {order.userId?.name || order.userId?.email || `ID: ${typeof order.userId === 'string' ? order.userId.slice(-8) : order.userId?._id?.slice(-8) || 'N/A'}`}
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -427,16 +428,14 @@ const Orders = () => {
                     <div key={item._id || index} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
                       <div className="flex items-center space-x-3">
                         {item.product?.image?.[0] ? (
-                        
-<img
-  src={`${BASE_URL}/images/${item.product.image[0]}`}
-  alt={item.product.name}
-  className="w-12 h-12 object-cover rounded-lg"
-  onError={(e) => {
-    e.target.src = "https://via.placeholder.com/48?text=No+Image";
-  }}
-/>
-
+                          <img
+                            src={getImageUrl(item.product.image[0])}
+                            alt={item.product.name}
+                            className="w-12 h-12 object-cover rounded-lg"
+                            onError={(e) => {
+                              e.target.src = "https://via.placeholder.com/48?text=No+Image";
+                            }}
+                          />
                         ) : (
                           <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
                             <span className="text-lg">🧶</span>
