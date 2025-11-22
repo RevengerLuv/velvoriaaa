@@ -1,6 +1,6 @@
 // routes/analytics.routes.js
 import express from "express";
-import { authSeller } from "./authSeller.js";
+import { authSeller } from "../middlewares/authSeller.js";
 import {
   getSalesAnalytics,
   getCustomerAnalytics,
