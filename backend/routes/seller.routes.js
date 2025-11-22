@@ -1,11 +1,10 @@
 import express from "express";
-
 import {
   checkAuth,
   sellerLogin,
   sellerLogout,
 } from "../controller/seller.controller.js";
-import { authSeller } from "./authSeller.js";
+import { authSeller } from "../middlewares/authSeller.js"; // CHANGED FROM "./authSeller.js"
 const router = express.Router();
 
 router.post("/login", sellerLogin);
