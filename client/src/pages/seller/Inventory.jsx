@@ -4,6 +4,7 @@ import { useAppContext } from "../../context/AppContext";
 import { toast } from "react-hot-toast";
 
 const Inventory = () => {
+  const BASE_URL = import.meta.env.VITE_BACKEND_URL;
   const { axios, products, fetchProducts } = useAppContext();
   const [inventory, setInventory] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -209,7 +210,7 @@ const filteredInventory = inventory.filter(item => {
                     <td className="px-6 py-4">
                       <div className="flex items-center gap-3">
                         {item.image ? (
-                          const BASE_URL = import.meta.env.VITE_BACKEND_URL;
+                          
 <img 
   src={`${BASE_URL}/images/${product.image[0]}`}
   alt={item.name}
