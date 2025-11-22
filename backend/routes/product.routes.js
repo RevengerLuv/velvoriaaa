@@ -6,6 +6,7 @@ import {
   getProducts,
 } from "../controller/product.controller.js";
 import { upload } from "../config/multer.js";
+import { authSeller } from "../middlewares/authSeller.js"; // ADD THIS IMPORT
 
 const router = express.Router();
 
