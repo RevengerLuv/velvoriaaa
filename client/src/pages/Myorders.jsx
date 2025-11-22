@@ -136,7 +136,7 @@ const MyOrders = () => {
                       <div key={index} className="flex items-center space-x-4 p-3 bg-gray-50 rounded-lg">
                         {item.product?.image?.[0] ? (
                           <img
-                            src={`http://localhost:5000/images/${item.product.image[0]}`}
+                            src={`${BASE_URL}/images/${product.image[0]}`}
                             alt={item.product.name}
                             className="w-16 h-16 object-cover rounded-lg"
                           />
@@ -260,7 +260,7 @@ const MyOrders = () => {
                       <div className="flex items-center space-x-3">
                         {item.product?.image?.[0] ? (
                           <img
-                            src={`http://localhost:5000/images/${item.product.image[0]}`}
+                            src={`${BASE_URL}/images/${product.image[0]}`}
                             alt={item.product.name}
                             className="w-12 h-12 object-cover rounded-lg"
                           />
