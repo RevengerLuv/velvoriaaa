@@ -44,7 +44,21 @@ app.get("/api/health", (req, res) => {
 
 // DEBUG: Load routes one by one to find the problematic one
 console.log('🔄 Starting route registration...');
+console.log('🔍 Checking for global route usage...');
 
+// This will catch any global route usage
+const originalUse = app.use;
+app.use = function(...args) {
+  console.log('🔄 Global app.use() called with:', args[0]);
+  return originalUse.apply(this, args);
+};
+
+// Also check router usage
+const originalRouterUse = express.Router.prototype.use;
+express.Router.prototype.use = function(...args) {
+  console.log('🔄 Router.use() called with:', args[0]);
+  return originalRouterUse.apply(this, args);
+};
 try {
   console.log('1. Loading admin routes...');
   const adminRoutes = await import('./routes/admin.routes.js');
