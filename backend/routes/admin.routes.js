@@ -1,5 +1,5 @@
 import express from "express";
-import { authSeller } from "../../middlewares/authSeller.js";
+import { authSeller } from "./authSeller.js";
 import { adminRateLimiter, enhancedAuthSeller, validateAdminInput, adminActionLogger } from "../../middlewares/adminSecurity.js";
 
 import {
