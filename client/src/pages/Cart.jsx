@@ -789,11 +789,13 @@ const Cart = () => {
                 }}
                 className="cursor-pointer w-24 h-24 flex items-center justify-center border border-gray-300 rounded-lg overflow-hidden"
               >
-                <img
-                  className="max-w-full h-full object-cover"
-                  src={`${BASE_URL}/images/${product.image[0]}`}
-                  alt={product.name}
-                />
+                const BASE_URL = import.meta.env.VITE_BACKEND_URL;
+<img
+  src={`${BASE_URL}/images/${product.image[0]}`}
+  alt={product.name}
+  className="w-full h-48 object-cover"
+/>
+
               </div>
               <div>
                 <p className="hidden md:block font-semibold text-gray-800">{product.name}</p>
