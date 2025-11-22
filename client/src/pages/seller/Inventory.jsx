@@ -210,7 +210,7 @@ const filteredInventory = inventory.filter(item => {
                       <div className="flex items-center gap-3">
                         {item.image ? (
                           <img 
-                            src={`http://localhost:5000/images/${item.image}`} 
+                            src={`${BASE_URL}/images/${product.image[0]}`}
                             alt={item.name}
                             className="w-12 h-12 object-cover rounded-lg"
                           />
