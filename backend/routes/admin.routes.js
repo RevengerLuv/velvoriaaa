@@ -1,7 +1,6 @@
 import express from "express";
-import { authSeller } from "./authSeller.js";
-import { adminRateLimiter, enhancedAuthSeller, validateAdminInput, adminActionLogger } from "../../middlewares/adminSecurity.js";
-
+import { authSeller } from "../middlewares/authSeller.js";
+import { adminRateLimiter, enhancedAuthSeller, validateAdminInput, adminActionLogger } from "../middlewares/adminSecurity.js";
 import {
   getSettings,
   updateSettings,
