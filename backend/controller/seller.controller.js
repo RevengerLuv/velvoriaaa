@@ -1,3 +1,6 @@
+import jwt from "jsonwebtoken";
+import bcrypt from "bcryptjs";
+
 // Enhanced seller login with security features
 export const sellerLogin = async (req, res) => {
   try {
@@ -68,7 +71,6 @@ export const sellerLogin = async (req, res) => {
         sameSite: "lax", // Changed to lax for cross-site compatibility
         maxAge: 7 * 24 * 60 * 60 * 1000,
         path: "/",
-        // REMOVE domain: process.env.NODE_ENV === "production" ? ".yourdomain.com" : undefined
       });
 
       // Log successful login
@@ -98,6 +100,66 @@ export const sellerLogin = async (req, res) => {
     }
   } catch (error) {
     console.error("Error in sellerLogin:", error);
+    res.status(500).json({ 
+      message: "Internal server error",
+      success: false 
+    });
+  }
+};
+
+// ADD THE MISSING checkAuth FUNCTION
+export const checkAuth = async (req, res) => {
+  try {
+    // Security audit info
+    const securityInfo = {
+      ip: req.ip,
+      userAgent: req.get('User-Agent'),
+      lastLogin: req.seller?.loginTime ? new Date(req.seller.loginTime).toISOString() : 'unknown'
+    };
+
+    res.status(200).json({
+      success: true,
+      user: {
+        email: req.seller?.email,
+      },
+      security: {
+        secureConnection: req.secure,
+        twoFactorEnabled: false
+      }
+    });
+  } catch (error) {
+    console.error("Error in checkAuth:", error);
+    res.status(500).json({ 
+      message: "Internal server error",
+      success: false 
+    });
+  }
+};
+
+// ADD THE MISSING sellerLogout FUNCTION
+export const sellerLogout = async (req, res) => {
+  try {
+    // Log logout action
+    console.log('🔐 Admin logout:', {
+      email: req.seller?.email,
+      ip: req.ip,
+      timestamp: new Date().toISOString()
+    });
+
+    // Clear cookie with same options as login
+    res.clearCookie("sellerToken", {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: "lax",
+      path: "/",
+    });
+    
+    return res.status(200).json({
+      message: "Logged out successfully",
+      success: true,
+    });
+  } catch (error) {
+    console.error("Error in logout:", error);
     res.status(500).json({ 
       message: "Internal server error",
       success: false 
