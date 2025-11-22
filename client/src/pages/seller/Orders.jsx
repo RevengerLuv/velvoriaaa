@@ -429,7 +429,7 @@ const Orders = () => {
                         {item.product?.image?.[0] ? (
                         
 <img
-  src={`${BASE_URL}/images/${product.image[0]}`}
+  src={`${BASE_URL}/images/${item.product.image[0]}`}
   alt={item.product.name}
   className="w-12 h-12 object-cover rounded-lg"
   onError={(e) => {
