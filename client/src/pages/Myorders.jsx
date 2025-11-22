@@ -3,6 +3,7 @@ import { useAppContext } from "../context/AppContext";
 import { toast } from "react-hot-toast";
 
 const MyOrders = () => {
+  const BASE_URL = import.meta.env.VITE_BACKEND_URL;
   const { axios, user } = useAppContext();
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -135,7 +136,7 @@ const MyOrders = () => {
                     {order.items?.map((item, index) => (
                       <div key={index} className="flex items-center space-x-4 p-3 bg-gray-50 rounded-lg">
                         {item.product?.image?.[0] ? (
-                                          const BASE_URL = import.meta.env.VITE_BACKEND_URL;
+                                          
 <img
   src={`${BASE_URL}/images/${product.image[0]}`}
   alt={product.name}
@@ -260,7 +261,7 @@ const MyOrders = () => {
                     <div key={index} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
                       <div className="flex items-center space-x-3">
                         {item.product?.image?.[0] ? (
-                                          const BASE_URL = import.meta.env.VITE_BACKEND_URL;
+                                          
 <img
   src={`${BASE_URL}/images/${product.image[0]}`}
   alt={product.name}
