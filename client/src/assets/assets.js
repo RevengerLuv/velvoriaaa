@@ -102,43 +102,43 @@ export const assets = {
 
 export const categories = [
   {
-    text: "Organic veggies",
+    text: "Amigurumi",
     path: "Vegetables",
     image: organic_vegitable_image,
     bgColor: "#FEF6DA",
   },
   {
-    text: "Fresh Fruits",
+    text: "Wearables",
     path: "Fruits",
     image: fresh_fruits_image,
     bgColor: "#FEE0E0",
   },
   {
-    text: "Cold Drinks",
+    text: "Home Decor",
     path: "Drinks",
     image: bottles_image,
     bgColor: "#F0F5DE",
   },
   {
-    text: "Instant Food",
+    text: "Accessories",
     path: "Instant",
     image: maggi_image,
     bgColor: "#E1F5EC",
   },
   {
-    text: "Dairy Products",
+    text: "Seasonal",
     path: "Dairy",
     image: dairy_product_image,
     bgColor: "#FEE6CD",
   },
   {
-    text: "Bakery & Breads",
+    text: "Custom",
     path: "Bakery",
     image: bakery_image,
     bgColor: "#E0F6FE",
   },
   {
-    text: "Grains & Cereals",
+    text: "Purse",
     path: "Grains",
     image: grain_image,
     bgColor: "#F1E3F9",
