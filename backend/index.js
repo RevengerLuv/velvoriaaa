@@ -8,17 +8,6 @@ import { connectCloudinary } from "./config/cloudinary.js";
 // Load environment variables first
 dotenv.config();
 
-// ✅ FIXED: Corrected import paths for routes
-import userRoutes from "./routes/user.routes.js";
-import sellerRoutes from "./routes/seller.routes.js";
-import productRoutes from "./routes/product.routes.js";
-import cartRoutes from "./routes/cart.routes.js";
-import addressRoutes from "./routes/address.routes.js";
-import orderRoutes from "./routes/order.routes.js";
-import adminRoutes from "./routes/admin.routes.js";
-import paymentRoutes from "./routes/payment.routes.js";
-import analyticsRoutes from "./routes/analytics.routes.js";
-
 const app = express();
 
 // ✅ Configure CORS FIRST
@@ -53,22 +42,61 @@ app.get("/api/health", (req, res) => {
   });
 });
 
-// Add this BEFORE your API routes
-app.use("/api/*", (req, res, next) => {
-  console.log(`🔄 API Route Hit: ${req.method} ${req.originalUrl}`);
-  next();
-});
+// DEBUG: Load routes one by one to find the problematic one
+console.log('🔄 Starting route registration...');
 
-// ✅ FIXED: API routes with proper middleware imports
-app.use("/api/admin", adminRoutes);
-app.use("/api/user", userRoutes);
-app.use("/api/seller", sellerRoutes);
-app.use("/api/product", productRoutes);
-app.use("/api/cart", cartRoutes);
-app.use("/api/address", addressRoutes);
-app.use("/api/orders", orderRoutes);
-app.use("/api/payment", paymentRoutes);
-app.use("/api/analytics", analyticsRoutes);
+try {
+  console.log('1. Loading admin routes...');
+  const adminRoutes = await import('./routes/admin.routes.js');
+  app.use("/api/admin", adminRoutes.default);
+  console.log('✅ Admin routes loaded');
+
+  console.log('2. Loading user routes...');
+  const userRoutes = await import('./routes/user.routes.js');
+  app.use("/api/user", userRoutes.default);
+  console.log('✅ User routes loaded');
+
+  console.log('3. Loading seller routes...');
+  const sellerRoutes = await import('./routes/seller.routes.js');
+  app.use("/api/seller", sellerRoutes.default);
+  console.log('✅ Seller routes loaded');
+
+  console.log('4. Loading product routes...');
+  const productRoutes = await import('./routes/product.routes.js');
+  app.use("/api/product", productRoutes.default);
+  console.log('✅ Product routes loaded');
+
+  console.log('5. Loading cart routes...');
+  const cartRoutes = await import('./routes/cart.routes.js');
+  app.use("/api/cart", cartRoutes.default);
+  console.log('✅ Cart routes loaded');
+
+  console.log('6. Loading address routes...');
+  const addressRoutes = await import('./routes/address.routes.js');
+  app.use("/api/address", addressRoutes.default);
+  console.log('✅ Address routes loaded');
+
+  console.log('7. Loading order routes...');
+  const orderRoutes = await import('./routes/order.routes.js');
+  app.use("/api/orders", orderRoutes.default);
+  console.log('✅ Order routes loaded');
+
+  console.log('8. Loading payment routes...');
+  const paymentRoutes = await import('./routes/payment.routes.js');
+  app.use("/api/payment", paymentRoutes.default);
+  console.log('✅ Payment routes loaded');
+
+  console.log('9. Loading analytics routes...');
+  const analyticsRoutes = await import('./routes/analytics.routes.js');
+  app.use("/api/analytics", analyticsRoutes.default);
+  console.log('✅ Analytics routes loaded');
+
+  console.log('🎉 All routes loaded successfully!');
+
+} catch (error) {
+  console.error('❌ ERROR loading routes:', error);
+  process.exit(1);
+}
 
 // Add this AFTER your API routes to catch 404s
 app.use("/api/*", (req, res) => {
