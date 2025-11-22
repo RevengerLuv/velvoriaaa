@@ -1,4 +1,5 @@
 import express from "express";
+import { authSeller } from "../../middlewares/authSeller.js";
 import { 
   createRazorpayOrder, 
   verifyPayment, 
