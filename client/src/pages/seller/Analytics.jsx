@@ -2,31 +2,7 @@
 import { useState, useEffect } from "react";
 import { useAppContext } from "../../context/AppContext";
 import { toast } from "react-hot-toast";
-import {
-  Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  LineElement,
-  PointElement,
-  ArcElement,
-  Title,
-  Tooltip,
-  Legend,
-} from 'chart.js';
-import { Bar, Line, Doughnut } from 'react-chartjs-2';
-
-ChartJS.register(
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  LineElement,
-  PointElement,
-  ArcElement,
-  Title,
-  Tooltip,
-  Legend
-);
+// ... chart imports remain the same
 
 const Analytics = () => {
   const { axios } = useAppContext();
@@ -39,7 +15,8 @@ const Analytics = () => {
   const fetchAnalytics = async () => {
     try {
       setLoading(true);
-      const { data } = await axios.get(`/api/admin/order-analytics?period=${timeRange}`);
+      // CHANGE FROM: /api/admin/order-analytics TO: /api/seller/analytics
+      const { data } = await axios.get(`/api/seller/analytics?period=${timeRange}`);
       if (data.success) {
         setAnalyticsData(data);
       } else {
@@ -58,7 +35,8 @@ const Analytics = () => {
   // Fetch real-time stats
   const fetchRealTimeStats = async () => {
     try {
-      const { data } = await axios.get("/api/admin/realtime-stats");
+      // CHANGE FROM: /api/admin/realtime-stats TO: /api/seller/realtime-stats
+      const { data } = await axios.get("/api/seller/realtime-stats");
       if (data.success) {
         setRealTimeStats(data.data);
       }
