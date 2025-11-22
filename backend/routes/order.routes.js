@@ -16,7 +16,6 @@ import {
   sendCustomerNotification,
   getOrderAnalytics
 } from "../controller/order.controller.js";
-import { authSeller } from "../middlewares/authSeller.js";
 
 const router = express.Router();
 
