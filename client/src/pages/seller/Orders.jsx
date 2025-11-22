@@ -19,7 +19,8 @@ const Orders = () => {
     try {
       setLoading(true);
       console.log('🔄 Fetching orders from API...');
-      const { data } = await axios.get('/api/orders/seller');
+      // CHANGE FROM: /api/orders/seller TO: /api/seller/orders
+      const { data } = await axios.get('/api/seller/orders');
       console.log('📦 API Response:', data);
       
       if (data?.success) {
@@ -40,7 +41,8 @@ const Orders = () => {
 
   const updateOrderStatus = async (orderId, newStatus) => {
     try {
-      const { data } = await axios.put(`/api/orders/${orderId}/status`, {
+      // CHANGE FROM: /api/orders/${orderId}/status TO: /api/seller/orders/${orderId}/status
+      const { data } = await axios.put(`/api/seller/orders/${orderId}/status`, {
         status: newStatus
       });
 
@@ -61,7 +63,8 @@ const Orders = () => {
 
   const addTrackingInfo = async (orderId) => {
     try {
-      const { data } = await axios.put(`/api/orders/${orderId}/tracking`, trackingInfo);
+      // CHANGE FROM: /api/orders/${orderId}/tracking TO: /api/seller/orders/${orderId}/tracking
+      const { data } = await axios.put(`/api/seller/orders/${orderId}/tracking`, trackingInfo);
 
       if (data.success) {
         toast.success('Tracking information added!');
