@@ -136,6 +136,14 @@ export const checkAuth = async (req, res) => {
   }
 };
 
+// In sellerLogin function, add these logs:
+console.log('🔐 Login attempt:', { email, password });
+console.log('🔐 Environment check:', { 
+  SELLER_EMAIL: process.env.SELLER_EMAIL,
+  SELLER_PASSWORD: process.env.SELLER_PASSWORD ? 'SET' : 'NOT SET',
+  SELLER_PASSWORD_HASH: process.env.SELLER_PASSWORD_HASH ? 'SET' : 'NOT SET'
+});
+
 // ADD THE MISSING sellerLogout FUNCTION
 export const sellerLogout = async (req, res) => {
   try {
