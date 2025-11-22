@@ -54,11 +54,13 @@ const SingleProduct = () => {
                     thumbnail === image ? 'border-purple-500' : 'border-gray-300'
                   }`}
                 >
-                  <img
-                    src={`${BASE_URL}/images/${product.image[0]}`}
-                    alt={`${product.name} view ${index + 1}`}
-                    className="w-20 h-20 lg:w-24 lg:h-24 object-cover"
-                  />
+                const BASE_URL = import.meta.env.VITE_BACKEND_URL;
+<img
+  src={`${BASE_URL}/images/${product.image[0]}`}
+  alt={`${product.name} view ${index + 1}`}
+  className="w-20 h-20 lg:w-24 lg:h-24 object-cover"
+/>
+
                 </div>
               ))}
             </div>
