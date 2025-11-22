@@ -4,8 +4,10 @@ import { dummyAddress } from "../assets/assets";
 import axios from "axios";
 import toast from "react-hot-toast";
 
+
 // Enhanced Payment Component with COD Advance
 const PaymentModal = ({ amount, onSuccess, onClose, isCODAdvance = false, totalAmount = 0 }) => {
+  
   const { axios: axiosInstance, user } = useAppContext();
   const [loading, setLoading] = useState(false);
 
@@ -501,6 +503,7 @@ const LocationModal = ({ isOpen, onClose, onLocationSelect, currentLocation }) =
 
 const Cart = () => {
   const {
+    
     products,
     navigate,
     cartCount,
@@ -512,7 +515,7 @@ const Cart = () => {
     axios,
     user,
   } = useAppContext();
-
+ const BASE_URL = import.meta.env.VITE_BACKEND_URL;
   const [cartArray, setCartArray] = useState([]);
   const [address, setAddress] = useState([]);
   const [showAddress, setShowAddress] = useState(false);
@@ -789,7 +792,7 @@ const Cart = () => {
                 }}
                 className="cursor-pointer w-24 h-24 flex items-center justify-center border border-gray-300 rounded-lg overflow-hidden"
               >
-                const BASE_URL = import.meta.env.VITE_BACKEND_URL;
+               
 <img
   src={`${BASE_URL}/images/${product.image[0]}`}
   alt={product.name}
