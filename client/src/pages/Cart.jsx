@@ -791,7 +791,7 @@ const Cart = () => {
               >
                 <img
                   className="max-w-full h-full object-cover"
-                  src={`http://localhost:5000/images/${product.image[0]}`}
+                  src={`${BASE_URL}/images/${product.image[0]}`}
                   alt={product.name}
                 />
               </div>
