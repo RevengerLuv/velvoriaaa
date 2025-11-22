@@ -6,6 +6,7 @@ import { assets } from "../assets/assets";
 import ProductCard from "../components/ProductCard";
 
 const SingleProduct = () => {
+  const BASE_URL = import.meta.env.VITE_BACKEND_URL;
   const { products, navigate, addToCart } = useAppContext();
   const { id } = useParams();
   const [thumbnail, setThumbnail] = useState(null);
@@ -54,7 +55,7 @@ const SingleProduct = () => {
                     thumbnail === image ? 'border-purple-500' : 'border-gray-300'
                   }`}
                 >
-                const BASE_URL = import.meta.env.VITE_BACKEND_URL;
+                
 <img
   src={`${BASE_URL}/images/${product.image[0]}`}
   alt={`${product.name} view ${index + 1}`}
@@ -66,7 +67,7 @@ const SingleProduct = () => {
             </div>
 
             <div className="border border-gray-200 rounded-lg overflow-hidden order-1 lg:order-2 flex-1">
-              const BASE_URL = import.meta.env.VITE_BACKEND_URL;
+              
 
 <img
   src={`${BASE_URL}/images/${thumbnail}`}
