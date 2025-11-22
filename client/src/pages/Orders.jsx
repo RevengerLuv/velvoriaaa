@@ -3,6 +3,7 @@ import { AppContext } from '../../context/AppContext';
 import toast from 'react-hot-toast';
 
 const Orders = () => {
+  const BASE_URL = import.meta.env.VITE_BACKEND_URL;
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(true);
   const [selectedOrder, setSelectedOrder] = useState(null);
