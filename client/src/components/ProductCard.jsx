@@ -2,6 +2,7 @@ import { assets } from "../assets/assets";
 import { useAppContext } from "../context/AppContext";
 
 const ProductCard = ({ product, index }) => {
+  const BASE_URL = import.meta.env.VITE_BACKEND_URL;
   const { addToCart, removeFromCart, cartItems, navigate } = useAppContext();
   
   if (!product) return null;
@@ -17,7 +18,7 @@ const ProductCard = ({ product, index }) => {
     >
       {/* Image Container */}
       <div className="relative overflow-hidden rounded-xl mb-4">
-        const BASE_URL = import.meta.env.VITE_BACKEND_URL;
+        
 
 <img
   className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500"
