@@ -1,5 +1,5 @@
 import express from "express";
-import { authSeller } from "../middlewares/authSeller.js";
+import { authSeller } from "../../middlewares/authSeller.js";
 import {
   addProduct,
   changeStock,
