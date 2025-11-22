@@ -113,14 +113,15 @@ try {
 }
 
 // Add this AFTER your API routes to catch 404s
-app.use("/api/*", (req, res) => {
+app.use("/api", (req, res) => {
   console.log(`❌ API Route Not Found: ${req.method} ${req.originalUrl}`);
-  res.status(404).json({ 
-    success: false, 
+  res.status(404).json({
+    success: false,
     message: "API route not found",
-    path: req.originalUrl 
+    path: req.originalUrl,
   });
 });
+
 
 // Connect to services and start server
 const PORT = process.env.PORT || 5000;
