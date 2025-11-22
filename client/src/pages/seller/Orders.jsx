@@ -210,7 +210,7 @@ const Orders = () => {
                           <div className="flex items-center space-x-3">
                             {item.product?.image?.[0] ? (
                               <img
-                                src={`http://localhost:5000/images/${item.product.image[0]}`}
+                                src={`${BASE_URL}/images/${product.image[0]}`}
                                 alt={item.product.name}
                                 className="w-12 h-12 object-cover rounded-lg"
                                 onError={(e) => {
@@ -425,7 +425,7 @@ const Orders = () => {
                       <div className="flex items-center space-x-3">
                         {item.product?.image?.[0] ? (
                           <img
-                            src={`http://localhost:5000/images/${item.product.image[0]}`}
+                            src={`${BASE_URL}/images/${product.image[0]}`}
                             alt={item.product.name}
                             className="w-12 h-12 object-cover rounded-lg"
                           />
