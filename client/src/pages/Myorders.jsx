@@ -138,10 +138,11 @@ const MyOrders = () => {
                         {item.product?.image?.[0] ? (
                                           
 <img
-  src={`${BASE_URL}/images/${product.image[0]}`}
-  alt={product.name}
+  src={`${BASE_URL}/images/${item.product?.image?.[0]}`}
+  alt={item.product?.name}
   className="w-full h-48 object-cover"
 />
+
                         ) : (
                           <div className="w-16 h-16 bg-purple-100 rounded-lg flex items-center justify-center">
                             <span className="text-2xl">🧶</span>
@@ -263,10 +264,11 @@ const MyOrders = () => {
                         {item.product?.image?.[0] ? (
                                           
 <img
-  src={`${BASE_URL}/images/${product.image[0]}`}
-  alt={product.name}
+  src={`${BASE_URL}/images/${item.product?.image?.[0]}`}
+  alt={item.product?.name}
   className="w-full h-48 object-cover"
 />
+
                         ) : (
                           <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
                             <span className="text-lg">🧶</span>
