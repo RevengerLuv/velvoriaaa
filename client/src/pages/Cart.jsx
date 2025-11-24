@@ -59,7 +59,7 @@ const handlePayment = async () => {
     console.log("✅ Order created:", data);
 
     const options = {
-      key: "rzp_live_RjT6xDcPhY4fbJ", // FIXED: Use key directly instead of process.env
+      key: import.meta.env.VITE_RAZORPAY_KEY_ID,  // FIXED: Use key directly instead of process.env
       amount: data.amountInPaise, // Use the paise amount from server
       currency: data.currency || "INR",
       name: "Velvoria - Fiber ART",
