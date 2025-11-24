@@ -40,7 +40,7 @@ const Payment = ({ amount, onSuccess, onClose }) => {
 
       // Razorpay options
       const options = {
-        key: import.meta.env.VITE_RAZORPAY_KEY_ID || "rzp_live_RjT6xDcPhY4fbJ",
+        key: import.meta.env.VITE_RAZORPAY_KEY_ID,
         amount: data.amount,
         currency: data.currency,
         name: "Grocery Store",
